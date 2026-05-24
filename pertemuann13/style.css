@@ -1,0 +1,125 @@
+/* ==========================================================================
+   GLOBAL STYLES
+   ========================================================================== */
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+table {
+    border-collapse: collapse;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    border: none;
+}
+
+/* ==========================================================================
+   1. STYLING NAVIGASI ATAS (TOP MENU MODERN)
+   ========================================================================== */
+nav ul {
+    background: #ffffff;
+    padding: 0 10px;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid #e1e4e8;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    display: block; 
+    padding: 14px 20px;
+    color: #555; 
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+nav ul li:hover > a {
+    background: #f4f6f8;
+    color: #2b5876;
+}
+
+nav ul ul {
+    display: none;
+    background: #ffffff; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 5px 0;
+    position: absolute; 
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    border-radius: 4px;
+    border: 1px solid #e1e4e8;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
+
+nav ul ul li {
+    width: 180px; 
+}
+
+nav ul ul li a {
+    padding: 10px 15px;
+    color: #444;
+    font-size: 14px;
+}
+
+nav ul ul li a:hover {
+    background: #2b5876;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   2. STYLING MENU UTAMA (SIDEBAR KIRI)
+   ========================================================================== */
+#menu {
+    background: #ffffff;
+    padding: 15px;
+    list-style: none;
+    display: block;
+    margin: 0;
+}
+
+#menu b {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8a99ad;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    padding-left: 8px;
+}
+
+#menu br {
+    display: none; 
+}
+
+#menu a:link, #menu a:visited {
+    display: block;
+    padding: 8px 12px;
+    color: #4e5d6c;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#menu a:hover {
+    background-color: #eef2f5;
+    color: #2b5876;
+    padding-left: 16px; 
+}
