@@ -1,0 +1,550 @@
+/* NurdinCar - CSS Design System (Sharp & Corporate Theme) */
+
+:root {
+    --bg-light: #f3f4f6;
+    --navbar-bg: #0f172a;
+    --card-bg: #ffffff;
+    --border-color: #d1d5db;
+    --border-light: rgba(255, 255, 255, 0.08);
+    
+    --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    --secondary-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    --danger-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --text-muted: #9ca3af;
+    
+    --accent-blue: #3b82f6;
+    --accent-amber: #f59e0b;
+    --accent-green: #10b981;
+    --accent-red: #ef4444;
+    
+    --transition-smooth: all 0.2s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-secondary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .brand-name {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Gradient text utility */
+.text-gradient {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* App Layout Structure */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Top Horizontal Navbar */
+.app-navbar {
+    background-color: var(--navbar-bg);
+    border-bottom: 3px solid var(--accent-blue);
+    height: 75px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.navbar-brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    background: rgba(59, 130, 246, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.brand-name {
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+}
+
+.brand-name .text-gradient {
+    background: var(--secondary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Horizontal Menu Links */
+.navbar-menu-horizontal {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.nav-horizontal-item {
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.nav-horizontal-item i {
+    font-size: 1rem;
+}
+
+.nav-horizontal-item:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-horizontal-item.active {
+    color: #ffffff;
+    background: var(--accent-blue);
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.25);
+}
+
+/* Profile Actions Wrapper */
+.navbar-actions-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.system-time {
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.system-time .text-gradient {
+    background: var(--secondary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.user-profile-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar-small {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 0.75rem;
+}
+
+.user-name-small {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+/* Main Layout Wrappers */
+.app-main-layout {
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.app-content-view {
+    flex-grow: 1;
+    padding-bottom: 40px;
+}
+
+.app-footer {
+    padding: 20px 0;
+    background-color: transparent;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+
+.footer-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Corporate Card Design (Sharp corners, Left Border accent) */
+.card-premium {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-blue); /* Left side color accent instead of top */
+    border-radius: 6px; /* Sharp corners */
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.card-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    border-left-color: var(--accent-amber); /* Accent changes on hover */
+}
+
+/* Dashboard Stat Cards */
+.stat-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-primary);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    background: #f3f4f6;
+    border: 1px solid var(--border-color);
+    transition: var(--transition-smooth);
+}
+
+.stat-icon.blue {
+    color: var(--accent-blue);
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.15);
+}
+
+.stat-icon.green {
+    color: var(--accent-green);
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.15);
+}
+
+.stat-icon.purple {
+    color: #8b5cf6;
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.15);
+}
+
+.stat-icon.red {
+    color: var(--accent-red);
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.15);
+}
+
+/* Premium Buttons (Sharp corners) */
+.btn-gradient {
+    background: var(--primary-gradient);
+    color: #ffffff !important;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.15);
+    border-radius: 6px;
+    padding: 10px 20px;
+    transition: var(--transition-smooth);
+}
+
+.btn-gradient:hover {
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    opacity: 0.95;
+}
+
+.btn-secondary-custom {
+    background-color: #ffffff;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+}
+
+.btn-secondary-custom:hover {
+    background-color: #f9fafb;
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+}
+
+.btn-action {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    border: 1px solid transparent;
+}
+
+.btn-action.btn-edit {
+    background: rgba(59, 130, 246, 0.08);
+    color: var(--accent-blue);
+    border-color: rgba(59, 130, 246, 0.15);
+}
+
+.btn-action.btn-edit:hover {
+    background: var(--accent-blue);
+    color: #ffffff;
+}
+
+.btn-action.btn-delete {
+    background: rgba(239, 68, 68, 0.08);
+    color: var(--accent-red);
+    border-color: rgba(239, 68, 68, 0.15);
+}
+
+.btn-action.btn-delete:hover {
+    background: var(--accent-red);
+    color: #ffffff;
+}
+
+.btn-action.btn-return {
+    background: rgba(16, 185, 129, 0.08);
+    color: var(--accent-green);
+    border-color: rgba(16, 185, 129, 0.15);
+    width: auto;
+    padding: 0 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.btn-action.btn-return:hover {
+    background: var(--accent-green);
+    color: #ffffff;
+}
+
+/* Premium Form Elements */
+.form-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+
+.form-control-custom {
+    width: 100%;
+    padding: 10px 14px;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+.form-control-custom:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+select.form-control-custom {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 14px;
+}
+
+.form-control-custom:disabled, select.form-control-custom:disabled {
+    background-color: #f3f4f6;
+    color: var(--text-muted);
+    cursor: not-allowed;
+}
+
+/* Table Custom Design (Sharp corners) */
+.table-responsive-custom {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: var(--card-bg);
+}
+
+.table-custom {
+    width: 100%;
+    margin-bottom: 0;
+    color: var(--text-secondary);
+    border-collapse: collapse;
+}
+
+.table-custom th {
+    background-color: #f9fafb;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    color: var(--text-primary);
+    padding: 14px 18px;
+    border-bottom: 2px solid var(--border-color);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table-custom td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+    font-size: 0.9rem;
+    background-color: #ffffff;
+}
+
+.table-custom tbody tr:hover td {
+    background-color: #f9fafb;
+}
+
+/* Status Badges */
+.badge-status {
+    padding: 4px 10px;
+    border-radius: 4px; /* Sharp badge */
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.badge-status::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.badge-status.available {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid rgba(6, 95, 70, 0.1);
+}
+
+.badge-status.available::before {
+    background-color: var(--accent-green);
+}
+
+.badge-status.rented {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid rgba(153, 27, 27, 0.1);
+}
+
+.badge-status.rented::before {
+    background-color: var(--accent-red);
+}
+
+.badge-status.maintenance {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid rgba(146, 64, 14, 0.1);
+}
+
+.badge-status.maintenance::before {
+    background-color: var(--accent-amber);
+}
+
+/* Message Alerts */
+.alert-custom {
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid transparent;
+}
+
+.alert-custom-success {
+    background: #d1fae5;
+    color: #065f46;
+    border-color: rgba(6, 95, 70, 0.15);
+}
+
+.alert-custom-danger {
+    background: #fee2e2;
+    color: #991b1b;
+    border-color: rgba(153, 27, 27, 0.15);
+}
+
+/* UI details */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.page-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
