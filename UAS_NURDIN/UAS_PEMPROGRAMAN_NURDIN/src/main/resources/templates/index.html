@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Dashboard - Reservasi Hotel</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts (Outfit) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #f4f6f9;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .nav-link {
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #ffc107 !important;
+            transform: translateY(-1px);
+        }
+        .nav-link.active {
+            color: #ffc107 !important;
+            border-bottom: 2px solid #ffc107;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 4rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+        }
+        .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+        .footer {
+            margin-top: auto;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .bg-indigo-light { background-color: rgba(102, 16, 242, 0.1); color: #6610f2; }
+        .bg-teal-light { background-color: rgba(32, 201, 151, 0.1); color: #20c997; }
+        .bg-orange-light { background-color: rgba(253, 126, 20, 0.1); color: #fd7e14; }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fa-solid fa-hotel me-2 text-warning"></i>Grand UNPAM Hotel
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/"><i class="fa-solid fa-chart-line me-1"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/reservasi/baru"><i class="fa-solid fa-calendar-plus me-1"></i> Reservasi Baru</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/reservasi/daftar"><i class="fa-solid fa-list-check me-1"></i> Daftar Reservasi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        
+        <!-- Welcome Hero Banner -->
+        <div class="hero-section text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-4 fw-bold mb-3">Selamat Datang di Sistem Reservasi Hotel</h1>
+                    <p class="lead mb-4">Aplikasi pengelolaan reservasi kamar hotel yang interaktif, cepat, dan aman menggunakan Spring Boot, Thymeleaf, dan Database MySQL.</p>
+                    <a href="/reservasi/baru" class="btn btn-warning btn-lg px-4 me-md-2 fw-semibold">
+                        <i class="fa-solid fa-calendar-plus me-2"></i>Buat Reservasi Sekarang
+                    </a>
+                    <a href="/reservasi/daftar" class="btn btn-outline-light btn-lg px-4">
+                        <i class="fa-solid fa-list me-2"></i>Lihat Reservasi
+                    </a>
+                </div>
+                <div class="col-md-4 text-center d-none d-md-block">
+                    <i class="fa-solid fa-hotel fa-10x text-white-50"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Widgets -->
+        <div class="row g-4">
+            
+            <!-- Card Total Reservasi -->
+            <div class="col-md-4">
+                <div class="card p-4 h-100">
+                    <div class="icon-box bg-indigo-light">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                    </div>
+                    <h5 class="card-title text-muted fw-semibold">Total Reservasi Aktif</h5>
+                    <h2 class="display-5 fw-bold text-dark mt-2" th:text="${totalReservasi}">0</h2>
+                    <p class="text-muted mt-2">Jumlah reservasi terdaftar di database MySQL.</p>
+                </div>
+            </div>
+
+            <!-- Card Kuota & Kapasitas Kamar -->
+            <div class="col-md-8">
+                <div class="card p-4 h-100">
+                    <h5 class="card-title text-muted fw-semibold mb-4"><i class="fa-solid fa-door-open me-2 text-primary"></i>Kapasitas Maksimal Kamar (Exception Threshold)</h5>
+                    <div class="row g-3">
+                        <div class="col-4 text-center border-end">
+                            <div class="icon-box bg-teal-light mx-auto">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <h6 class="fw-bold">Single Room</h6>
+                            <p class="mb-0 text-muted">Maks. <span class="fw-bold text-dark" th:text="${limits.get('Single')}">5</span> Unit</p>
+                        </div>
+                        <div class="col-4 text-center border-end">
+                            <div class="icon-box bg-orange-light mx-auto">
+                                <i class="fa-solid fa-user-group"></i>
+                            </div>
+                            <h6 class="fw-bold">Double Room</h6>
+                            <p class="mb-0 text-muted">Maks. <span class="fw-bold text-dark" th:text="${limits.get('Double')}">3</span> Unit</p>
+                        </div>
+                        <div class="col-4 text-center">
+                            <div class="icon-box bg-indigo-light mx-auto" style="color: #d63384; background-color: rgba(214, 51, 132, 0.1);">
+                                <i class="fa-solid fa-crown"></i>
+                            </div>
+                            <h6 class="fw-bold">Suite Room</h6>
+                            <p class="mb-0 text-muted">Maks. <span class="fw-bold text-dark" th:text="${limits.get('Suite')}">2</span> Unit</p>
+                        </div>
+                    </div>
+                    <div class="alert alert-warning mt-4 mb-0 py-2" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                        Jika pemesanan melebihi batas kuota di atas, sistem akan mengaktifkan <strong>Exception Handling</strong> dan menolak pemesanan.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <span class="fw-semibold">UAS Pemrograman II © 2026 - Universitas Pamulang</span>
+            <br>
+            <small class="text-white-50">Jakarta EE 10 | NetBeans 21 | Spring Boot 3.3.4</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
